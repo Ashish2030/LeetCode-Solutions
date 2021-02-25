@@ -1,0 +1,60 @@
+class Solution {
+    public int minPathSum(int[][] grid)
+    {
+        int dp[][]=new int[grid.length][grid[0].length];
+        for(int arr[]:dp)
+            Arrays.fill(arr,-1);
+        return x(grid,grid.length-1,grid[0].length-1,0,0,dp);//2 2 0 0 
+    }
+    /*
+    public int  x(int arr[][],int starti,int startj,int reachi,int reachj,int dp[][])
+    {
+         if(dp[starti][startj]!=-1)
+        {
+            return dp[starti][startj];
+        }
+        if(starti==reachi&&startj==reachj)
+        {
+           return arr[0][0]; 
+        }
+        if(starti==0)
+        {
+           dp[starti][startj]=(x(arr,starti,startj-1,reachi,reachj,dp)+arr[starti][startj]); 
+            return dp[starti][startj];
+        }
+         if(startj==0)
+        {
+          dp[starti][startj]= x(arr,starti-1,startj,reachi,reachj,dp)+arr[starti][startj];
+          return dp[starti][startj];
+        }
+        int temp1=x(arr,starti,startj-1,reachi,reachj,dp);
+        int temp2=x(arr,starti-1,startj,reachi,reachj,dp);
+        dp[starti][startj]=Math.min(temp1,temp2)+arr[starti][startj];
+        return dp[starti][startj];
+    }
+    */
+     public int  x(int arr[][],int starti,int startj,int reachi,int reachj,int dp[][])// arr,2,2,0,0
+     {
+         if(dp[starti][startj]!=-1)
+         {
+             return dp[starti][startj];
+         }
+      if(starti==0&&startj==0)
+      {
+          return dp[starti][startj]=arr[0][0];
+      }
+         if(starti==0)
+         {
+             return dp[starti][startj]=x(arr,starti,startj-1,reachi,reachj,dp)+arr[starti][startj];
+         }
+         else if(startj==0)
+         {
+               return dp[starti][startj]=x(arr,starti-1,startj,reachi,reachj,dp)+arr[starti][startj];
+         }
+         int min1=x(arr,starti-1,startj,reachi,reachj,dp);
+         int min2=x(arr,starti,startj-1,reachi,reachj,dp);
+         int min3=Math.min(min1,min2);
+         dp[starti][startj]=min3+arr[starti][startj];
+         return dp[starti][startj];
+     }
+}

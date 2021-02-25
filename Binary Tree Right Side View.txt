@@ -1,0 +1,26 @@
+class Solution {
+    static int count=0;
+    public List<Integer>rightSideView(TreeNode root) //but khudh ka logic tha y sir k ke logic se kiya
+        
+    {  
+        count=0;
+        List<Integer> li=new ArrayList<>();
+        u(root,1,li);
+        return li;
+    }
+      public void u(TreeNode root,int level,List<Integer> li) 
+    {
+          if(root==null)
+          {
+              return ;
+          }
+          if(count<level)
+          {
+             li.add(root.val);
+              count=level;
+          }
+          u(root.right,level+1,li);
+           u(root.left,level+1,li);
+    }
+    
+}

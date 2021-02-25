@@ -1,0 +1,62 @@
+import java.util.*; 
+class Solution {
+    public int numDistinct(String s, String t)
+    { 
+        char a[]=s.toCharArray();
+        char b[]=t.toCharArray();
+
+        return x(a,b,a.length,b.length);   
+    }
+    public int x(char s[],char t[],int n,int k)
+    {
+        /*
+         if(k==0)
+       {
+           return 1;
+       }
+        if(n==0)
+        {
+            return 0;
+        }
+
+        if(s[n-1]!=t[k-1])
+        {
+          return x(s,t,n-1,k);   
+        }
+        else
+        {
+        return x(s,t,n-1,k-1)+x(s,t,n-1,k); 
+        }
+        */
+        int dp[][]=new int[s.length+1][t.length+1];
+        for(int i=0;i<s.length;i++)
+        {
+            dp[i][0]=1;
+        }
+         for(int i=1;i<t.length;i++)
+        {
+             dp[0][i]=0;
+        }
+         //   for (int i = 0; i < t.length; i++)
+         //   System.out.println(Arrays.toString(dp[i]));
+        for(int i=1;i<=s.length;i++)
+        {
+            for(int j=1;j<=t.length;j++)
+            {
+                if(s[i-1]!=t[j-1])
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
+                else
+                {
+                    dp[i][j]=dp[i-1][j-1]+dp[i-1][j];
+                }
+            }
+        }
+       // for (int i = 0; i < t.length; i++)
+           // System.out.println(Arrays.toString(dp[i]));
+        return dp[n][k];
+    
+    }
+    
+}

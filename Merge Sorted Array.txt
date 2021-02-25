@@ -1,0 +1,21 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) 
+    {
+   ArrayList<Integer> a1=new ArrayList<>();
+        for(int i=0;i<m;i++)
+        {
+            a1.add(nums1[i]);
+        }
+         for(int j=0;j<n;j++)
+        {
+            a1.add(nums2[j]);
+        }
+        int y=0;
+        Collections.sort(a1);
+        for(int i:a1)
+        {
+           nums1[y]=i; 
+            y++;
+        }
+    }
+}

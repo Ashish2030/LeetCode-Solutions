@@ -1,0 +1,114 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    /*
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root)
+    {
+        List<List<Integer>> p=new ArrayList<>();
+        Stack<TreeNode> a=new Stack();
+         Stack <TreeNode> b=new Stack();
+         if(root==null)
+         {
+             return p;
+         }
+        else
+        {
+            a.push(root);
+        }
+        int flag=0;
+        while(a.size()!=0||b.size()!=0)
+        {
+            flag=0;
+             List<Integer> u=new ArrayList<>();
+            while(a.size()!=0)
+            {
+                flag=1;
+                TreeNode n=a.pop();
+                u.add(n.val);
+               
+                if(n.left!=null)
+                {
+                    b.push(n.left);
+                }
+                 if(n.right!=null)
+                {
+                     b.push(n.right);
+                }
+            }
+             if(flag==1)
+            p.add(u);
+           List<Integer> u1=new ArrayList<>();
+              while(b.size()!=0)
+            {
+                  flag=2;
+                TreeNode n=b.pop();
+                u1.add(n.val);
+                if(n.right!=null)
+                {
+                    a.push(n.right);
+                }
+                 if(n.left!=null)
+                {
+                     a.push(n.left);
+                }
+            }
+            if(flag==2)
+             p.add(u1);
+              System.out.println(p);
+        }
+        return p;
+    }
+    */
+        public List<List<Integer>> zigzagLevelOrder(TreeNode root)
+        {
+             List<List<Integer>> po=new ArrayList<>();
+            Map<Integer,List> map=new HashMap<>();
+            x(map,1,root);
+            System.out.println(map);
+            int count=0;
+            for(Map.Entry<Integer,List> map1:map.entrySet())
+            {
+                if(count%2==0)
+                {
+                    po.add(map1.getValue()); 
+                }
+                else
+                {
+                    List<Integer> a=new ArrayList<>();
+                    a=map1.getValue();
+                    Collections.reverse(a);
+                    po.add(map1.getValue()); 
+               }
+               
+                count++;
+            }
+            return po;
+            
+        }
+         public Map<Integer,List> x(Map<Integer,List>u,int level,TreeNode root)
+        {
+            if(root==null)
+            {
+                return u;
+            }
+            List<Integer> q=u.getOrDefault(level, new ArrayList<>());
+             q.add(root.val);
+             u.put(level,q);
+             x(u,level+1,root.left);
+             x(u,level+1,root.right);
+             return u;
+         }
+}

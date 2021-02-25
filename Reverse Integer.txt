@@ -1,0 +1,16 @@
+class Solution {
+    public int reverse(int x )
+    {
+        int c=(x>0?x:-1*x);
+        String k=new StringBuffer(String.valueOf(c)).reverse().toString();
+        try
+        {
+         int p=Integer.parseInt(k);
+        return (x>0?p:-1*p);
+        }
+        catch(Exception e)
+        {
+            return 0;
+        }  
+    }
+}

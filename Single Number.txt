@@ -1,0 +1,104 @@
+class Solution {
+    public int singleNumber(int[] nums) 
+    {
+        //--------------------------------------1st----------------------------
+        int a=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            a=a^nums[i];//
+            System.out.println(a);
+        }
+        return a;
+        
+               /*
+       Map<Integer,Integer> a1=new LinkedHashMap<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(!a1.containsKey(nums[i]))
+            {
+              a1.put(nums[i],1);  
+            }
+            else
+            {
+                int t=a1.get(nums[i]);
+                a1.put(nums[i],t+1);
+             }
+         }
+        int u=0;
+        for(Map.Entry<Integer,Integer> h:a1.entrySet())
+        {
+            int r=h.getValue();
+            if(r==1)
+            {
+            u=h.getKey();
+                break;
+
+            }
+        }
+        return u;
+        */
+        /*---------------------------------2d ways----------------------------------------
+        int i=0;
+        int j=1;
+        int val=0;
+        int flag=0;
+        if(nums.length==1)
+        {
+            return nums[0];
+        }
+        while(i<nums.length)
+        {
+             if(nums[i]==Integer.MAX_VALUE)
+                {
+                 System.out.println(i);
+                    i++;
+                 if(i==nums.length-1)
+                 {
+                     val=nums[i];
+                     break;
+                 }
+                 else
+                 {
+                     j++;
+                 }
+                }
+            else if(nums[i]==nums[j])
+            {
+                nums[j]=Integer.MAX_VALUE;
+                i++;
+                if(i==nums.length-1)
+                {
+                    break;
+                }
+                else
+                {
+                    j=i+1;
+                }
+            }
+            else
+            {
+               j++;
+                if(j==nums.length)
+                {
+                    val=nums[i];
+                    flag=1;
+                    i++;
+                    if(i==nums.length-1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        j=i+1;
+                    }
+                }
+                if(flag==1)
+                {
+                    break;
+                }
+            }
+        }
+        return val;
+        */
+    }
+}

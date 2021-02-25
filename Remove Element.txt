@@ -1,0 +1,50 @@
+class Solution {
+  static  int removeElement(int[] nums, int val)
+    {
+      /*
+        int count=0;
+      int x=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]!=val)
+            {
+                count++;
+            }
+        }
+       for(int i=0;i<nums.length-1;i++)
+       {
+           if(nums[i]==val)
+           {
+              for(int j=i;j<nums.length-1;j++)
+             {
+               nums[j]=nums[j+1];
+             }
+             nums[nums.length-1]=Integer.MIN_VALUE;
+             i--;
+           }
+       }
+ 
+        return count;
+        */
+      int i=0;
+      int flag=0;
+      if(nums.length==0)
+      {
+          return 0;
+      }
+      if(nums[i]!=val)
+      {
+          i++;
+      }
+      for(int j=1;j<nums.length;j++)
+      {
+        if(nums[j]!=val)
+        {
+            nums[i]=nums[j];
+            i++;
+        }
+      }
+      return i;
+    }
+
+}

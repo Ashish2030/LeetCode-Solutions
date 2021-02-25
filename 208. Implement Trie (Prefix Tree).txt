@@ -1,0 +1,88 @@
+class Trie {
+    class Node
+    {
+        char data;
+        Map<Character,Node> children;
+        boolean isshade;
+        Node(char t)
+        {
+            data=t;
+            children=new HashMap<>();
+            isshade=false;
+        }
+    }
+    Node root;
+    /** Initialize your data structure here. */
+    public Trie()
+    {
+        this.root=new Node('*'); 
+    }
+    
+    /** Inserts a word into the trie. */
+    public void insert(String word) 
+    {
+        Node curr=root;
+        char a[]=word.toCharArray();
+        for(char b:a)
+        {
+            if(curr.children.containsKey(b))
+            {
+                curr=curr.children.get(b);
+            }
+            else
+            {
+                Node x=new Node(b);
+                curr.children.put(b,x);
+                curr=x;
+            }
+        }
+        curr.isshade=true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) 
+    {
+         Node curr=root;
+         char a[]=word.toCharArray();
+        for(char k:a)
+        {
+            if(curr.children.containsKey(k))
+            {
+                curr=curr.children.get(k);
+            }
+            else
+            {
+               return false; 
+            }
+        }
+        return curr.isshade;
+        
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix)
+    {
+        Node curr=root;
+         char a[]=prefix.toCharArray();
+        for(char k:a)
+        {
+            if(curr.children.containsKey(k))
+            {
+                curr=curr.children.get(k);
+            }
+            else
+            {
+               return false; 
+            }
+        }
+        return true; 
+    }
+}
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie obj = new Trie();
+ * obj.insert(word);
+ * boolean param_2 = obj.search(word);
+ * boolean param_3 = obj.startsWith(prefix);
+ */

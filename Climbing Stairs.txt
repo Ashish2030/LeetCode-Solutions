@@ -1,0 +1,51 @@
+class Solution {
+    /*-------------------------------------------------------------- Recursive Approch----------------------------------------------------------
+     public int climbStairs(int n)
+    {
+        int arr[]=new int[n+1];
+         Arrays.fill(arr,-1);
+         int r=x4(arr,n);
+         return r;
+    }
+    public int x4(int arr[],int n) 
+    {
+        if(n==0)
+        {
+            return 1;
+        }
+          if(n<0)
+        {
+            return 0;
+        }
+        if(arr[n]!=-1)
+        {
+            return arr[n];
+        }
+      
+        int m=x4(arr,n-1);
+        int n1=x4(arr,n-2);
+        int ans=m+n1;
+        arr[n]=ans;
+        
+       return ans; 
+    //return arr[n];   
+    }
+    */
+        public int climbStairs(int n)
+        {
+            int arr[]=new int[n+1];
+            arr[0]=1;
+            arr[1]=1;
+            int ans=0;
+            for(int i=2;i<=n;i++)
+            {
+                int x=arr[i-1];
+                int y=arr[i-2];
+                 ans=x+y;
+                arr[i]=ans;
+            }
+            
+            return arr[n];
+        }
+   
+}
