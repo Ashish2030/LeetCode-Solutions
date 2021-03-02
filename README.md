@@ -2,6 +2,7 @@
 <h1 align="center">
   This is my Leet-Code Solution
 </h1>
+<a href="https://github.com/ashish2030/Calculator/fork" target="blank">
 <p align="center">
   <img src="https://img.shields.io/github/forks/ashish2030/LeetCode-Solutions?style=flat-square" alt="LeetCode-Solutions"/>
 </a>
